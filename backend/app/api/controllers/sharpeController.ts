@@ -13,11 +13,17 @@ export async function get_sharpe_ratio(req: Request, res: Response) {
 
 
     Object.entries(req.query).forEach(([key, value]: [string, any]) => {
+        if (isNaN(parseInt(value))) {
+            res.status(400).send({ error: `non number value in years field for ${key}` });
+            errorsent = true;
+            return;
+        }
+
         if (key == "years") {
             sharpeRatioInput.years = parseInt(value);
         }
         else {
-            if (!(key in tickerData)) {
+            if ((!(key in tickerData)) && errorsent == false) {
                 res.status(400).send({ error: `Ticker ${key} not found` });
                 errorsent = true;
                 return;
