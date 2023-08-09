@@ -9,11 +9,9 @@ export class GetSharpeRatioInput {
 
 export class GetSharpeRatioOutput {
     sharpeRatio: number;
-    portfolio: StockData[];
 
     constructor(data: any) {
         this.sharpeRatio = data.sharpeRatio;
-        this.portfolio = data.portfolio;
     }
 }
 
@@ -64,7 +62,7 @@ export async function calculateSharpeRatio(input: GetSharpeRatioInput): Promise<
     const riskFreeReturn = await getRiskFreeRateFromYahoo(input.years)
     const sharpeRatio = (portfolioAvgReturn - riskFreeReturn) / standardDevOfPortfolio
 
-    var sharpeRatioOutput = new GetSharpeRatioOutput({ portfolio: input.portfolio, sharpeRatio: sharpeRatio });
+    var sharpeRatioOutput = new GetSharpeRatioOutput({ sharpeRatio: sharpeRatio });
 
     return sharpeRatioOutput
 
