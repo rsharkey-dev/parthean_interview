@@ -1,2 +1,4 @@
 .DS_STORE
-/frontend/nodemodules
+frontend/nodemodules
+backend/nodemodules
+fontend/.expo
