@@ -1,4 +1,4 @@
 .DS_STORE
-frontend/nodemodules
-backend/nodemodules
-fontend/.expo
+frontend/nodemodules/
+backend/nodemodules/
+fontend/.expo/
